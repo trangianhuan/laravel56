@@ -11,7 +11,7 @@
   <div id="app">
       <main-app></main-app>
   </div>
-  <script src="{{ 'js/app.js' }}"></script>
+  <script src="{{ 'js/app-admin.js' }}"></script>
 
 </body>
 </html>

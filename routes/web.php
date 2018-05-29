@@ -18,3 +18,11 @@ Route::get('/', function () {
 Route::get('/admin', function () {
     return view('admin');
 });
+
+Route::get('/admin/article/create', function () {
+    return view('admin');
+});
+
+Route::get('{path:.*}', function () {
+    return view('admin');
+});

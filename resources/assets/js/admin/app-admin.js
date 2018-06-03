@@ -16,8 +16,9 @@ window.Vue = require('vue');
  */
 import routes from './router';
 import VueRouter from 'vue-router';
+import store from './store/index.js'
 Vue.component('main-app', require('./components/MainApp.vue'));
-
+Vue.use(VueRouter);
 const router = new VueRouter({
   mode: 'history',
   routes
@@ -25,5 +26,6 @@ const router = new VueRouter({
 
 const app = new Vue({
     el: '#app',
-    router
+    router,
+    store
 });

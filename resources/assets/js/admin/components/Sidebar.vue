@@ -1,77 +1,67 @@
 <template>
-  <div id="wrapper" class="container-fluid">
-    <div class="row">
+    <div class="col-xs-3 col-md-2 sidebar" id="main-sidebar" data-hook="admin_tabs">
+        <ul class="nav nav-sidebar">
+            <li class="sidebar-menu-item selected"><a class="icon-link with-tip action-shopping-cart" href="/admin/orders" data-original-title="" title=""><span class="icon icon-shopping-cart"></span> <span class="text">Orders</span></a>
+            </li>
+        </ul>
 
-        <div class="col-xs-3 col-md-2 sidebar" id="main-sidebar" data-hook="admin_tabs">
-            <ul class="nav nav-sidebar">
-                <li class="sidebar-menu-item selected"><a class="icon-link with-tip action-shopping-cart" href="/admin/orders" data-original-title="" title=""><span class="icon icon-shopping-cart"></span> <span class="text">Orders</span></a>
-                </li>
-            </ul>
+        <ul class="nav nav-sidebar">
+            <li class="sidebar-menu-item">
+                <a data-toggle="collapse" data-parent="#sidebar" href="#sidebar-returns">
+                    <span class="icon icon-transfer"></span>
+                    <span class="text"> Returns</span>
+                    <span class="icon icon-chevron-left pull-right"></span>
+                </a>
+                <ul id="sidebar-returns" class="collapse nav nav-pills nav-stacked" data-hook="admin_returns_sub_tabs">
+                    <li class="sidebar-menu-item"><a href="/admin/return_authorizations">Return Authorizations</a></li>
+                    <li class="sidebar-menu-item"><a href="/admin/customer_returns">Customer Returns</a></li>
+                </ul>
+            </li>
+        </ul>
 
-            <ul class="nav nav-sidebar">
-                <li class="sidebar-menu-item">
-                    <a data-toggle="collapse" data-parent="#sidebar" href="#sidebar-returns">
-                        <span class="icon icon-transfer"></span>
-                        <span class="text"> Returns</span>
-                        <span class="icon icon-chevron-left pull-right"></span>
-                    </a>
-                    <ul id="sidebar-returns" class="collapse nav nav-pills nav-stacked" data-hook="admin_returns_sub_tabs">
-                        <li class="sidebar-menu-item"><a href="/admin/return_authorizations">Return Authorizations</a></li>
-                        <li class="sidebar-menu-item"><a href="/admin/customer_returns">Customer Returns</a></li>
-                    </ul>
-                </li>
-            </ul>
+        <ul class="nav nav-sidebar">
+            <li class="sidebar-menu-item">
+                <a data-toggle="collapse" data-parent="#sidebar" href="#sidebar-product">
+                    <span class="icon icon-th-large"></span><span class="text"> Article</span>
+                    <span class="icon icon-chevron-left pull-right"></span>
+                </a>
+                <ul id="sidebar-product" class="collapse nav nav-pills nav-stacked" data-hook="admin_product_sub_tabs">
+                    <li class="sidebar-menu-item">
+                        <router-link to="/admin/article/create" class="nav-link">Create</router-link>
+                    </li>
 
-            <ul class="nav nav-sidebar">
-                <li class="sidebar-menu-item">
-                    <a data-toggle="collapse" data-parent="#sidebar" href="#sidebar-product">
-                        <span class="icon icon-th-large"></span><span class="text"> Products</span>
-                        <span class="icon icon-chevron-left pull-right"></span>
-                    </a>
-                    <ul id="sidebar-product" class="collapse nav nav-pills nav-stacked" data-hook="admin_product_sub_tabs">
-                        <li class="sidebar-menu-item"><a href="/admin/products">Products</a></li>
-                        <li class="sidebar-menu-item"><a href="/admin/option_types">Option Types</a></li>
-                        <li class="sidebar-menu-item"><a href="/admin/properties">Properties</a></li>
-                        <li class="sidebar-menu-item"><a href="/admin/prototypes">Prototypes</a></li>
-                        <li class="sidebar-menu-item"><a href="/admin/taxonomies">Taxonomies</a></li>
-                        <li class="sidebar-menu-item"><a href="/admin/taxons">Taxons</a></li>
-                    </ul>
-                </li>
-            </ul>
+                    <li class="sidebar-menu-item">
+                        <router-link to="/admin/article" class="nav-link">List</router-link>
+                    </li>
+                </ul>
+            </li>
+        </ul>
 
-            <ul class="nav nav-sidebar">
-                <li class="sidebar-menu-item">
-                    <a class="icon-link with-tip action-file" href="/admin/reports" data-original-title="" title="">
-                        <span class="icon icon-file"></span> <span class="text">Reports</span>
-                    </a>
-                </li>
-            </ul>
+        <ul class="nav nav-sidebar">
+            <li class="sidebar-menu-item">
+                <a class="icon-link with-tip action-file" href="/admin/reports" data-original-title="" title="">
+                    <span class="icon icon-file"></span> <span class="text">Reports</span>
+                </a>
+            </li>
+        </ul>
 
-            <ul class="nav nav-sidebar">
-                <li class="sidebar-menu-item">
-                    <a data-toggle="collapse" data-parent="#sidebar" href="#sidebar-promotions">
-                        <span class="icon icon-gift"></span>
-                        <span class="text"> Promotions</span>
-                        <span class="icon icon-chevron-left pull-right"></span>
-                    </a>
-                    <ul id="sidebar-promotions" class="collapse nav nav-pills nav-stacked" data-hook="admin_promotion_sub_tabs">
-                        <li class="sidebar-menu-item"><a href="/admin/promotions">Promotions</a></li>
-                        <li class="sidebar-menu-item"><a href="/admin/promotion_categories">Promotion Categories</a></li>
-                    </ul>
-                </li>
-            </ul>
+        <ul class="nav nav-sidebar">
+            <li class="sidebar-menu-item">
+                <a data-toggle="collapse" data-parent="#sidebar" href="#sidebar-promotions">
+                    <span class="icon icon-gift"></span>
+                    <span class="text"> Promotions</span>
+                    <span class="icon icon-chevron-left pull-right"></span>
+                </a>
+                <ul id="sidebar-promotions" class="collapse nav nav-pills nav-stacked" data-hook="admin_promotion_sub_tabs">
+                    <li class="sidebar-menu-item"><a href="/admin/promotions">Promotions</a></li>
+                    <li class="sidebar-menu-item"><a href="/admin/promotion_categories">Promotion Categories</a></li>
+                </ul>
+            </li>
+        </ul>
 
-            <div class="spree-version hidden-xs hidden-sm">3.6.0.beta</div>
-
-        </div>
-
-
-        <div class="main col-xs-9 offset-xs-3 col-md-10 offset-md-2" id="main-part">
-            AAAAAAAAAAA
-        </div>
+        <div class="spree-version hidden-xs hidden-sm">3.6.0.beta</div>
 
     </div>
-  </div>
 </template>
 <style lang="scss" scoped>
     li.sidebar-menu-item{

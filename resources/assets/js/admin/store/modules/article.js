@@ -36,20 +36,20 @@ const actions = {
         return new Promise(function (resolve, reject) {
             axios.post(url, data, { headers: { 'Content-Type': 'multipart/form-data' } }).then(res => {
                 console.log('create article',res);
-                if (res.data.success) {
+                if (res.status) {
                     resolve(true)
                 } else {
                     reject(false)
                 }
             }).catch(err => {
-                reject(err.response.data)
+                reject(err)
             })
         })
     },
     updateArticle({commit, state}, data) {
         return new Promise(function (resolve, reject) {
             axios.post(`${stamp_url}/${data.id}`, data.newData).then(res => {
-                if (res.data.success) {
+                if (res.status) {
                     resolve(true)
                 } else {
                     reject(false)
@@ -62,7 +62,7 @@ const actions = {
     deleteArticle({commit, state}, id) {
         return new Promise(function (resolve, reject) {
             axios.post(`${url}/${id}`, { _method: 'DELETE' }).then(res => {
-                if(res.data.success) {
+                if(res.status) {
                     resolve(true)
                 } else {
                     reject(false)

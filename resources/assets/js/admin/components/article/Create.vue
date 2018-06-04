@@ -3,14 +3,14 @@
         <fieldset data-hook="new_product">
             <div class="form-group field" id="product_name_field">
                 <label for="product_name">Name</label> <span class="required">*</span>
-                <input class="form-control title" required="required" type="text" value="" v-model="title" id="product_name">
+                <input class="form-control title" required="required" type="text" value="" v-model="article.title" id="product_name">
 
             </div>
             <div data-hook="new_product_attrs" class="row">
                 <div data-hook="new_product_sku" class="col-xs-12 col-md-4">
                     <div class="form-group field" id="product_sku_field">
                         <label for="product_sku">Content</label>
-                        <textarea size="16" class="form-control" type="text" value="" v-model="content" id="product_sku"></textarea>
+                        <textarea size="16" class="form-control" type="text" value="" v-model="article.content" id="product_sku"></textarea>
                     </div>
                 </div>
             </div>
@@ -33,8 +33,10 @@
     export default {
         data() {
             return {
-                title : null,
-                content : null,
+                article:{
+                    title : null,
+                    content : null,
+                }
             }
         },
         methods: {
@@ -45,7 +47,8 @@
                 'deleteArticle'
             ]),
             add(){
-                this.createArticle();
+console.log(this.article);
+                this.createArticle(this.article);
                 //this.$store.dispatch('article/createArticle');
             }
         },

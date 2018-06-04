@@ -1,5 +1,5 @@
 import Vuex from 'vuex'
-import Vue from 'Vue';
+import Vue from 'vue';
 import article from './modules/article.js'
 
 Vue.use(Vuex)

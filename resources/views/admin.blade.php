@@ -9,7 +9,7 @@
 </head>
 <body>
   <div id="app">
-      <main-app></main-app>
+    <router-view>
   </div>
   <script src="{{ asset('js/app-admin.js') }}"></script>
 

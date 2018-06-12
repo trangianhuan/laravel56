@@ -1,9 +1,7 @@
 <template lang="html">
-    <div id="main">
-        <Header />
-        <div id="wrapper" class="container-fluid">
-            <router-view></router-view>
-        </div>
+    <div class="row">
+        <Sidebar/>
+        <router-view></router-view>
     </div>
 </template>
 <style lang="scss">
@@ -19,10 +17,11 @@
 </style>
 <script>
     import Header from './Header';
+    import Sidebar from './Sidebar';
 
     export default {
       name: 'app',
-      components: { Header },
+      components: { Header, Sidebar },
       data () {
         return {
         }

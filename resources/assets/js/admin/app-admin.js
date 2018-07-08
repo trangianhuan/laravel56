@@ -17,8 +17,10 @@ window.Vue = require('vue');
 import routes from './router';
 import VueRouter from 'vue-router';
 import store from './store/index.js'
+import Vuetable from 'vuetable-2/src/components/Vuetable'
 Vue.component('main-app', require('./components/MainApp.vue'));
 Vue.use(VueRouter);
+Vue.use(Vuetable);
 const router = new VueRouter({
   mode: 'history',
   routes

@@ -11,17 +11,20 @@
   },
   "devDependencies": {
     "axios": "^0.18",
+    "babel-preset-stage-2": "^6.24.1",
     "bootstrap": "^4.0.0",
-    "popper.js": "^1.12",
     "cross-env": "^5.1",
     "jquery": "^3.2",
     "laravel-mix": "^2.0",
     "lodash": "^4.17.4",
+    "popper.js": "^1.12",
     "vue": "^2.5.7"
   },
   "dependencies": {
     "graphiql": "^0.11.11",
+    "vue-quill-editor": "^3.0.6",
     "vue-router": "^3.0.1",
+    "vuetable-2": "^1.7.5",
     "vuex": "^3.0.1"
   }
 }

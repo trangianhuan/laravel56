@@ -23,6 +23,10 @@ class ArticlesType extends GraphQLType
                 'type' => Type::nonNull(Type::int()),
                 'description' => 'The id of the article'
             ],
+            'title' => [
+                'type' => Type::string(),
+                'description' => 'The title of the article'
+            ],
             'content' => [
                 'type' => Type::string(),
                 'description' => 'The content of the article'

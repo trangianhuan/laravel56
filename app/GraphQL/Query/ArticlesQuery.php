@@ -31,52 +31,42 @@ class ArticlesQuery extends Query
     public function args()
     {
         return [
-            'page' => [
-                'name' => 'page',
-                'type' => Type::int(),
-                'description' => 'Display a specific page',
+            'id' => [
+                'name' => 'id',
+                'type' => Type::int()
             ],
-            'limit' => [
-                'name' => 'limit',
-                'type' => Type::int(),
-                'description' => 'Limit the items per page',
+            'content' => [
+                'name' => 'content',
+                'type' => Type::string()
             ],
-            // 'id' => [
-            //     'name' => 'id',
-            //     'type' => Type::int()
-            // ],
-            // 'content' => [
-            //     'name' => 'content',
-            //     'type' => Type::string()
-            // ],
-            // 'short_content' => [
-            //     'type' => Type::string(),
-            //     'name' => 'short_content'
-            // ],
-            // 'meta_title' => [
-            //     'type' => Type::string(),
-            //     'name' => 'meta_title'
-            // ],
-            // 'meta_keyword' => [
-            //     'type' => Type::string(),
-            //     'name' => 'meta_keyword'
-            // ],
-            // 'meta_name' => [
-            //     'type' => Type::string(),
-            //     'name' => 'meta_name'
-            // ],
-            // 'expiration_date' => [
-            //     'type' => Type::string(),
-            //     'name' => 'expiration_date'
-            // ],
-            // 'is_available' => [
-            //     'type' => Type::int(),
-            //     'name' => 'is_available'
-            // ],
-            // 'locale_id' => [
-            //     'type' => Type::int(),
-            //     'name' => 'locale_id'
-            // ]
+            'short_content' => [
+                'type' => Type::string(),
+                'name' => 'short_content'
+            ],
+            'meta_title' => [
+                'type' => Type::string(),
+                'name' => 'meta_title'
+            ],
+            'meta_keyword' => [
+                'type' => Type::string(),
+                'name' => 'meta_keyword'
+            ],
+            'meta_name' => [
+                'type' => Type::string(),
+                'name' => 'meta_name'
+            ],
+            'expiration_date' => [
+                'type' => Type::string(),
+                'name' => 'expiration_date'
+            ],
+            'is_available' => [
+                'type' => Type::int(),
+                'name' => 'is_available'
+            ],
+            'locale_id' => [
+                'type' => Type::int(),
+                'name' => 'locale_id'
+            ]
         ];
     }
 
@@ -86,17 +76,13 @@ class ArticlesQuery extends Query
             if (isset($args['id'])) {
                 $query->where('id',$args['id']);
             }
-
-            if (isset($args['email'])) {
-                $query->where('email',$args['email']);
-            }
         };
 
-        $user = Article::with(array_keys($fields->getRelations()))
+        $article = Article::with(array_keys($fields->getRelations()))
             ->where($where)
             ->select($fields->getSelect())
             ->paginate();
 
-        return $user;
+        return $article;
     }
 }

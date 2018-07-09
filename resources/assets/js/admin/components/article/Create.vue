@@ -47,9 +47,16 @@
                 'deleteArticle'
             ]),
             add(){
-console.log(this.article);
+                console.log(this.article);
                 this.createArticle(this.article);
                 //this.$store.dispatch('article/createArticle');
+            },
+            doFilter () {
+              this.$events.fire('filter-set', this.filterText)
+            },
+            resetFilter () {
+              this.filterText = ''  // clear the text in text input
+              this.$events.fire('filter-reset')
             }
         },
         computed: {

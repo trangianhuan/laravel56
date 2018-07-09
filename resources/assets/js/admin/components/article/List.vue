@@ -1,5 +1,7 @@
 <template>
     <div class="main col-xs-9 offset-xs-3 col-md-10 offset-md-2 ui container" id="main-part">
+        <filter-bar></filter-bar>
+
         <vuetable ref="vuetable"
             api-url="https://vuetable.ratiw.net/api/users"
             :fields="fields"
@@ -7,6 +9,7 @@
             :css="css.table"
             pagination-path=""
             :per-page="5"
+            :append-params="moreParams"
             @vuetable:pagination-data="onPaginationData"
         ></vuetable>
 
@@ -19,11 +22,13 @@
 <script>
 import Vuetable from 'vuetable-2/src/components/Vuetable'
 import VuetablePagination from 'vuetable-2/src/components/VuetablePagination'
+import FilterBar from '../FilterBar'
 
 export default {
   components: {
     Vuetable,
-    VuetablePagination
+    VuetablePagination,
+    FilterBar
   },
   data() {
     return{
@@ -69,8 +74,13 @@ export default {
                     last: 'fa fa-angle-double-right icon',
                 },
             }
-        }
+        },
+        moreParams: {}
     }
+  },
+  mounted() {
+    this.$events.$on('filter-set', eventData => this.onFilterSet(eventData))
+    this.$events.$on('filter-reset', e => this.onFilterReset())
   },
   methods:{
     onPaginationData (paginationData) {
@@ -78,6 +88,16 @@ export default {
     },
     onChangePage (page) {
       this.$refs.vuetable.changePage(page)
+    },
+    onFilterSet (filterText) {
+        this.moreParams = {
+            'filter': filterText
+        }
+        Vue.nextTick( () => this.$refs.vuetable.refresh())
+    },
+    onFilterReset () {
+        this.moreParams = {}
+        Vue.nextTick( () => this.$refs.vuetable.refresh())
     }
   }
 }

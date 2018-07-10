@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/{param}', function () {
-    return view('admin');
-})->where('param', '.*');
+// Route::get('/{param}', function () {
+//     return view('admin');
+// })->where('param', '.*');
 
 // Route::get('/admin', function () {
 //     return view('admin');
@@ -26,3 +26,7 @@ Route::get('/{param}', function () {
 // Route::get('{path:.*}', function () {
 //     return view('admin');
 // });
+
+Route::namespace('Admin')->group(function () {
+    Route::get('admin/article', 'ArticleController@all');
+});

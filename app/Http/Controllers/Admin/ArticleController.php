@@ -15,4 +15,20 @@ class ArticleController extends Controller
     public function all(){
         return $this->articleRepository->all();
     }
+
+    public function find($id){
+        return $this->articleRepository->find($id);
+    }
+
+    public function create(Request $request){
+        return $this->articleRepository->create($request);
+    }
+
+    public function update(Request $request){
+        return $this->articleRepository->update($request, $id);
+    }
+
+    public function delete($id){
+        return $this->articleRepository->delete($id);
+    }
 }

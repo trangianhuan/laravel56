@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Repositories\Contracts\ArticleRepositoryInterface;
 use App\Http\Requests\Api\ArticleRequest;
 
-class ArticleController extends Controller
+class UserController extends Controller
 {
     public function __construct(ArticleRepositoryInterface $articleRepository){
         $this->articleRepository = $articleRepository;
@@ -28,7 +28,7 @@ class ArticleController extends Controller
         return $this->articleRepository->find($id);
     }
 
-    public function create(ArticleRequest $request){
+    public function create(Request $request){
         $validator = $this->articleRepository->validateFields($request->all());
 
         if($validator) return $validator;

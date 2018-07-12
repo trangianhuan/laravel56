@@ -5,6 +5,7 @@ use App\Repositories\Contracts\RepositoryInterface;
 //use App\Repositories\Exceptions\RepositoryException;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Container\Container as App;
+use Validator;
 
 /**
  * Class Repository
@@ -22,6 +23,10 @@ abstract class Repository implements RepositoryInterface {
      */
     protected $model;
 
+    public $roles;
+
+    public $messages;
+
     /**
      * @param App $app
      * @throws \Bosnadev\Repositories\Exceptions\RepositoryException
@@ -29,6 +34,7 @@ abstract class Repository implements RepositoryInterface {
     public function __construct(App $app) {
         $this->app = $app;
         $this->makeModel();
+        $this->initFields();
     }
 
     /**
@@ -37,6 +43,8 @@ abstract class Repository implements RepositoryInterface {
      * @return mixed
      */
     abstract function model();
+
+    abstract function initFields();
 
     /**
      * @param array $columns
@@ -111,5 +119,41 @@ abstract class Repository implements RepositoryInterface {
             throw new RepositoryException("Class {$this->model()} must be an instance of Illuminate\\Database\\Eloquent\\Model");
 
         return $this->model = $model->newQuery();
+    }
+
+    /**
+     * [validate fields input]
+     * @param  [array] $params [description]
+     * @return [type]         [description]
+     */
+    public function validateFields(array $fields) {
+        $validator = Validator::make($fields, $this->roles, $this->messages);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->messages()->all()]);
+        }
+
+        return ;
+    }
+
+    public function search($query, $keyword, $searchColumns, $order, $limit, $page)
+    {
+        if (empty($query)) {
+            $query = $this->model;
+        }
+
+        if ($keyword) {
+            $query->where(function ($currentQuery) use ($keyword, $searchColumns) {
+                foreach ($searchColumns as $col) {
+                    $currentQuery->orWhere($col, 'like', "%$keyword%");
+                }
+            });
+        }
+
+        if (!empty($order)) {
+            $query->orderBy($order['column'], $order['dir']);
+        }
+
+        return $query->paginate($limit, ['*'], 'page', $page);
     }
 }

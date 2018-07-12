@@ -2,8 +2,8 @@
     <div class="main col-xs-9 offset-xs-3 col-md-10 offset-md-2 ui container" id="main-part">
         <filter-bar></filter-bar>
 
-        <vuetable ref="vuetable2"
-            api-url="http://laravel56.test:8088/api/article"
+        <vuetable ref="vuetable_user"
+            api-url="https://vuetable.ratiw.net/api/users"
             :fields="fields"
             :sort-order="sortOrder"
             :css="css.table"
@@ -34,14 +34,14 @@ export default {
     return{
         fields:[
             {
-              name: 'title',
-              sortField: 'title',
-              title: 'Title'
+              name: 'name',
+              sortField: 'name',
+              title: 'Name'
             },
             {
-              name: 'content',
-              sortField: 'content',
-              title: 'Content'
+              name: 'email',
+              sortField: 'email',
+              title: 'Email'
             }
         ],
         sortOrder: [
@@ -86,17 +86,19 @@ export default {
       this.$refs.pagination.setPaginationData(paginationData)
     },
     onChangePage (page) {
-      this.$refs.vuetable2.changePage(page)
+      this.$refs.vuetable_user.changePage(page)
     },
     onFilterSet (filterText) {
+        var that = this;
         this.moreParams = {
             'filter': filterText
         }
-        Vue.nextTick( () => this.$refs.vuetable2.refresh())
+        Vue.nextTick( () => that.$refs.vuetable_user.refresh())
     },
     onFilterReset () {
+        var that = this;
         this.moreParams = {}
-        Vue.nextTick( () => this.$refs.vuetable2.refresh())
+        Vue.nextTick( () => that.$refs.vuetable_user.refresh())
     }
   }
 }

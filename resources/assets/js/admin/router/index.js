@@ -3,9 +3,9 @@ import ArticleList from '../components/article/List.vue';
 import LoginPage from '../components/Login.vue';
 import MainApp from '../components/MainApp.vue'
 import AdminPage from '../components/AdminPage.vue'
-// import Home from '../pages/Home.vue';
-// import Timer from '../pages/timer/Timer.vue';
-// import ExamVuex from '../pages/exam-vuex/Exam-vuex.vue';
+
+import UserCreate from '../components/user/Create.vue';
+import UserList from '../components/user/List.vue';
 
 const routes = [
   {
@@ -17,6 +17,8 @@ const routes = [
             children: [
                 {path: 'article', component: ArticleList},
                 {path: 'article/create', component: ArticleCreate},
+                {path: 'user', component: UserList},
+                {path: 'user/create', component: UserCreate},
             ]
         }
     ]

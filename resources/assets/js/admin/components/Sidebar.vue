@@ -1,7 +1,11 @@
 <template>
     <div class="col-xs-3 col-md-2 sidebar" id="main-sidebar" data-hook="admin_tabs">
         <ul class="nav nav-sidebar">
-            <li class="sidebar-menu-item selected"><a class="icon-link with-tip action-shopping-cart" href="/admin/orders" data-original-title="" title=""><span class="icon icon-shopping-cart"></span> <span class="text">Orders</span></a>
+            <li class="sidebar-menu-item selected">
+                <a class="icon-link with-tip action-shopping-cart" href="/admin/orders" data-original-title="" title="">
+                    <span class="icon icon-shopping-cart"></span>
+                    <span class="text">Orders</span>
+                </a>
             </li>
         </ul>
 
@@ -9,12 +13,17 @@
             <li class="sidebar-menu-item">
                 <a data-toggle="collapse" data-parent="#sidebar" href="#sidebar-returns">
                     <span class="icon icon-transfer"></span>
-                    <span class="text"> Returns</span>
+                    <span class="text"> User</span>
                     <span class="icon icon-chevron-left pull-right"></span>
                 </a>
                 <ul id="sidebar-returns" class="collapse nav nav-pills nav-stacked" data-hook="admin_returns_sub_tabs">
-                    <li class="sidebar-menu-item"><a href="/admin/return_authorizations">Return Authorizations</a></li>
-                    <li class="sidebar-menu-item"><a href="/admin/customer_returns">Customer Returns</a></li>
+                    <li class="sidebar-menu-item">
+                        <router-link to="/admin/user" class="nav-link">List</router-link>
+                    </li>
+
+                    <li class="sidebar-menu-item">
+                        <router-link to="/admin/user/create" class="nav-link">Create</router-link>
+                    </li>
                 </ul>
             </li>
         </ul>
@@ -27,34 +36,12 @@
                 </a>
                 <ul id="sidebar-product" class="collapse nav nav-pills nav-stacked" data-hook="admin_product_sub_tabs">
                     <li class="sidebar-menu-item">
-                        <router-link to="/admin/article/create" class="nav-link">Create</router-link>
+                        <router-link to="/admin/article" class="nav-link">List</router-link>
                     </li>
 
                     <li class="sidebar-menu-item">
-                        <router-link to="/admin/article" class="nav-link">List</router-link>
+                        <router-link to="/admin/article/create" class="nav-link">Create</router-link>
                     </li>
-                </ul>
-            </li>
-        </ul>
-
-        <ul class="nav nav-sidebar">
-            <li class="sidebar-menu-item">
-                <a class="icon-link with-tip action-file" href="/admin/reports" data-original-title="" title="">
-                    <span class="icon icon-file"></span> <span class="text">Reports</span>
-                </a>
-            </li>
-        </ul>
-
-        <ul class="nav nav-sidebar">
-            <li class="sidebar-menu-item">
-                <a data-toggle="collapse" data-parent="#sidebar" href="#sidebar-promotions">
-                    <span class="icon icon-gift"></span>
-                    <span class="text"> Promotions</span>
-                    <span class="icon icon-chevron-left pull-right"></span>
-                </a>
-                <ul id="sidebar-promotions" class="collapse nav nav-pills nav-stacked" data-hook="admin_promotion_sub_tabs">
-                    <li class="sidebar-menu-item"><a href="/admin/promotions">Promotions</a></li>
-                    <li class="sidebar-menu-item"><a href="/admin/promotion_categories">Promotion Categories</a></li>
                 </ul>
             </li>
         </ul>

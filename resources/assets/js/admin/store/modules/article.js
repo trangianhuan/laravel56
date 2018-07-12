@@ -20,7 +20,7 @@ const mutations = {
         state.listArticle = state.listArticle.slice(0)
     }
 };
-var url = 'http://localhost:3000/articles';
+var url = 'http://laravel56.test:8088/api/article';
 const actions = {
     getArticleList({ commit, state }) {
         return new Promise(function (resolve, reject) {
@@ -33,18 +33,19 @@ const actions = {
         })
     },
     createArticle({commit, state}, data) {
-        return new Promise(function (resolve, reject) {
-            axios.post(url, data, { headers: { 'Content-Type': 'multipart/form-data' } }).then(res => {
-                console.log('create article',res);
-                if (res.status) {
-                    resolve(true)
-                } else {
-                    reject(false)
-                }
-            }).catch(err => {
-                reject(err)
-            })
-        })
+        return axios.post(url, data)
+        // .then(res => {
+        //     console.log('article',res.data.errors);
+        //     if (res.status) {
+        //         resolve(true)
+        //     } else {
+        //         reject(false)
+        //     }
+        // }).catch(err => {
+        //     reject('ddddd')
+        // })
+        // return new Promise(function (resolve, reject) {
+        // })
     },
     updateArticle({commit, state}, data) {
         return new Promise(function (resolve, reject) {

@@ -21,6 +21,7 @@
     methods: {
       doFilter () {
       this.$events.fire('filter-set', this.filterText)
+      console.log(process.env.APP_URL)
     },
     resetFilter () {
       this.filterText = ''  // clear the text in text input

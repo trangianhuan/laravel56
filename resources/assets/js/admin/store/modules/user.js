@@ -19,7 +19,7 @@ const mutations = {
         state.listUser = state.listUser.slice(0)
     }
 };
-var url = 'http://laravel56.test:8088/api/user';
+var url = 'http://laravel56.local.com/api/user';
 const actions = {
     getUserList({ commit, state }) {
         return new Promise(function (resolve, reject) {
@@ -49,6 +49,13 @@ const actions = {
             console.log(err);
         })
 
+    },
+    changePass({commit, state}, data){
+        axios.post(`${url}/${id}`, data).then(res => {
+            console.log(res);
+        }).catch(err=> {
+            console.log(err);
+        })
     }
 };
 

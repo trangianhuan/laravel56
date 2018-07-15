@@ -3,7 +3,7 @@
         <filter-bar></filter-bar>
 
         <vuetable ref="vuetable2"
-            api-url="http://laravel56.test:8088/api/article"
+            api-url="api/article"
             :fields="fields"
             :sort-order="sortOrder"
             :css="css.table"
@@ -76,6 +76,7 @@ export default {
   mounted() {
     this.$events.$on('filter-set', eventData => this.onFilterSet(eventData))
     this.$events.$on('filter-reset', e => this.onFilterReset())
+    console.log(process.env.APP_URL)
   },
   beforeDestroy() {
     this.$events.$off("filter-set");

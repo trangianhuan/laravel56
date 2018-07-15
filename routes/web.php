@@ -29,6 +29,12 @@ Route::namespace('Admin')->group(function () {
     Route::get('api/article/{id}', 'ArticleController@find');
     Route::put('api/article/{id}', 'ArticleController@update');
     Route::delete('api/article/{id}', 'ArticleController@delete');
+
+    Route::get('api/user', 'UserController@all');
+    Route::post('api/user', 'UserController@create');
+    Route::get('api/user/{id}', 'UserController@find');
+    Route::put('api/user/{id}', 'UserController@update');
+    Route::delete('api/user/{id}', 'UserController@delete');
 });
 
 Route::get('/{param}', function () {

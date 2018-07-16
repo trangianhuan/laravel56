@@ -25,21 +25,15 @@
                 </div>
             </div>
 
-            <div class="form-actions">
-                <button name="button" type="submit" @click="add" class="btn btn-primary btn-success" data-disable-with="Saving...">
-                    <span class="icon icon-ok"></span> Create
-                </button>
-                <span class="or">or</span>
-                <a icon="remove" class="btn btn-default" href="https://testspree1234.herokuapp.com/admin/products">
-                    <span class="icon icon-remove"></span> Cancel
-                </a>
-            </div>
+            <ButtonCus @save="add" @cancel="cancel"></ButtonCus>
 
         </fieldset>
     </div>
 </template>
 <script>
     import {mapGetters, mapActions, mapState} from 'vuex';
+    import ButtonCus from '../buttons/Button';
+
     export default {
         data() {
             return {
@@ -59,15 +53,22 @@
                 'deleteUser'
             ]),
             add(){
+                console.log('user create')
                 this.createUser(this.user).then(res => {
                     console.log(res);
                 }).catch(err => {
                     console.log(err);
                 });
+            },
+            cancel(){
+                console.log('cancel user')
             }
         },
         computed: {
             ...mapState('user', ['listUser']),
         },
+        components: {
+            ButtonCus
+        }
 }
 </script>

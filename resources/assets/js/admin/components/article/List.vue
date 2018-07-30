@@ -3,7 +3,7 @@
         <filter-bar></filter-bar>
 
         <vuetable ref="vuetable2"
-            api-url="http://laravel56.local.com/api/article"
+            api-url="../api/article"
             :fields="fields"
             :sort-order="sortOrder"
             :css="css.table"
@@ -23,12 +23,16 @@
 import Vuetable from 'vuetable-2/src/components/Vuetable'
 import VuetablePagination from 'vuetable-2/src/components/VuetablePagination'
 import FilterBar from '../FilterBar'
+import CustomActions from '../CustomActions'
+import Vue from 'vue'
+Vue.component('custom-actions', CustomActions)
 
 export default {
   components: {
     Vuetable,
     VuetablePagination,
-    FilterBar
+    FilterBar,
+    CustomActions
   },
   data() {
     return{
@@ -42,6 +46,12 @@ export default {
               name: 'content',
               sortField: 'content',
               title: 'Content'
+            },
+            {
+              name: '__component:custom-actions',
+              title: 'Actions',
+              titleClass: 'text-center',
+              dataClass: 'text-center'
             }
         ],
         sortOrder: [

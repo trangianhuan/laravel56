@@ -3,7 +3,7 @@
         <filter-bar></filter-bar>
 
         <vuetable ref="vuetable_user"
-            api-url="http://laravel56.local.com/api/user"
+            api-url="../api/user"
             :fields="fields"
             :sort-order="sortOrder"
             :css="css.table"

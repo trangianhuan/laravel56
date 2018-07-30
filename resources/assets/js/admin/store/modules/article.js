@@ -20,7 +20,7 @@ const mutations = {
         state.listArticle = state.listArticle.slice(0)
     }
 };
-var url = 'http://laravel56.local.com/api/article';
+var url = 'http://laravel56.test:8088/api/article';
 const actions = {
     getArticleList({ commit, state }) {
         return new Promise(function (resolve, reject) {

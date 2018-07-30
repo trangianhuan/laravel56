@@ -12,9 +12,9 @@
         <ul class="nav nav-sidebar">
             <li class="sidebar-menu-item">
                 <a data-toggle="collapse" data-parent="#sidebar" href="#sidebar-returns">
-                    <span class="icon icon-transfer"></span>
+                    <span class="fa fa-user fa-lg"></span>
                     <span class="text"> User</span>
-                    <span class="icon icon-chevron-left pull-right"></span>
+                    <span class="fa fa-chevron-left pull-right"></span>
                 </a>
                 <ul id="sidebar-returns" class="collapse nav nav-pills nav-stacked" data-hook="admin_returns_sub_tabs">
                     <li class="sidebar-menu-item">
@@ -31,8 +31,8 @@
         <ul class="nav nav-sidebar">
             <li class="sidebar-menu-item">
                 <a data-toggle="collapse" data-parent="#sidebar" href="#sidebar-product">
-                    <span class="icon icon-th-large"></span><span class="text"> Article</span>
-                    <span class="icon icon-chevron-left pull-right"></span>
+                    <span class="fa fa-newspaper-o fa-lg"></span><span class="text"> Article</span>
+                    <span class="fa fa-chevron-left pull-right"></span>
                 </a>
                 <ul id="sidebar-product" class="collapse nav nav-pills nav-stacked" data-hook="admin_product_sub_tabs">
                     <li class="sidebar-menu-item">

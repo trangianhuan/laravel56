@@ -19,7 +19,7 @@ const mutations = {
         state.listUser = state.listUser.slice(0)
     }
 };
-var url = 'http://laravel56.local.com/api/user';
+var url = 'http://laravel56.test:8088/api/user';
 const actions = {
     getUserList({ commit, state }) {
         return new Promise(function (resolve, reject) {

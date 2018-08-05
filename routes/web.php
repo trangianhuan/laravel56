@@ -35,6 +35,9 @@ Route::namespace('Admin')->group(function () {
     Route::get('api/user/{id}', 'UserController@find');
     Route::put('api/user/{id}', 'UserController@update');
     Route::delete('api/user/{id}', 'UserController@delete');
+
+    //feed
+    Route::get('api/feed', 'FeedController@getFeed');
 });
 
 Route::get('/{param}', function () {

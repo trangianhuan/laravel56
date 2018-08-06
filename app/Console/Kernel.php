@@ -13,7 +13,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        \App\Console\Commands\GetFeed::class
     ];
 
     /**
@@ -24,8 +24,10 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        $path_log = base_path('bash_log/feed.log');
+        $schedule->command('feed:get')
+                 ->everyMinute()
+                 ->appendOutputTo($path_log);
     }
 
     /**

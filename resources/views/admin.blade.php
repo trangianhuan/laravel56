@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>{{ config('app.name') }}</title>
-  <link rel="stylesheet" href="{{asset('css/app.css')}}">
-  <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
+  <link rel="stylesheet" href="{{('/css/app.css')}}">
+  <link rel="stylesheet" href="{{('/css/font-awesome.min.css')}}">
   <script>
       var URL_BASE = '';
   </script>
@@ -15,7 +15,7 @@
   <div id="app">
     <router-view>
   </div>
-  <script src="{{ asset('js/app-admin.js') }}"></script>
+  <script src="{{ ('/js/app-admin.js') }}"></script>
 
 </body>
 </html>

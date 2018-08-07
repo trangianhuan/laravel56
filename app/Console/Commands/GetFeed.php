@@ -43,6 +43,7 @@ class GetFeed extends Command
     {
         $feedSite = Information::where('type', 'FEED')->first();
         //$feedSite = $feedSite->feeds;
+        $feedSite = ['https://quan-cam.com/rss'];
 Log::debug($feedSite);
         foreach ($feedSite as $key => $site) {
             $feed    = Feeds::make($site);
@@ -51,13 +52,15 @@ Log::debug($feedSite);
                 $newFeed = Feed::where('site', $site)->orderBy('created_at', 'desc')->first();
 
                 if(!$newFeed) {
+                    $newFeed = new Feed();
                     $newFeed->publish_date = '2000-01-01';
                     $newFeed->url = 'null';
                 }
 
                 foreach($feed->get_items() as $item){
+                    Log::debug($item->get_id(), $item->get_date('Y-m-d H:i:s'));
                     if ($newFeed->url == $item->get_id()
-                        && $newFeed->publish_date == $item->get_date('Y-m-d')){
+                        && $newFeed->publish_date == $item->get_date('Y-m-d H:i:s')){
                         break;
                     }
 
@@ -67,7 +70,7 @@ Log::debug($feedSite);
                       'title'     => $item->get_title(),
                       'content'     => $item->get_content(),
                       'description' => $item->get_description(),
-                      'publish_date'     => $item->get_date('Y-m-d'),
+                      'publish_date'     => $item->get_date('Y-m-d H:i:s'),
                     );
 
                     Feed::create($data);

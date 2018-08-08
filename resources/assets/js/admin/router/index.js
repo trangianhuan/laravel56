@@ -7,6 +7,8 @@ import AdminPage from '../components/AdminPage.vue'
 import UserCreate from '../components/user/Create.vue';
 import UserList from '../components/user/List.vue';
 
+import FeedShow from '../components/feed/Show.vue';
+
 const routes = [
   {
     path: '/', component: MainApp,
@@ -19,6 +21,7 @@ const routes = [
                 {path: 'article/create', component: ArticleCreate},
                 {path: 'user', component: UserList},
                 {path: 'user/create', component: UserCreate},
+                {path: 'feed', component: FeedShow},
             ]
         }
     ]

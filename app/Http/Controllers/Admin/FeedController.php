@@ -5,26 +5,30 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Feeds;
+use App\Models\Information;
+
 class FeedController extends Controller
 {
+    const FEED = 'FEED';
+
     function getFeed(Request $request)
     {
         //$feed = Feeds::make('https://toidicodedao.com/feed');
-        $feed = Feeds::make('https://quan-cam.com/rss');
-        
-        $data = array(
-          'title'     => $feed->get_title(),
-          'permalink' => $feed->get_permalink(),
-          'items'     => $feed->get_items(),
-        );
-        
-        foreach($feed->get_items() as $item){
-            dd($item->get_content(), $item->get_date('Y-m-d'), $item->get_id(),
-                $item->get_title(), $item->get_description());
-            //var_dump($item->get_permalink(), $item->get_title(), $item->get_description(), $item->get_date('j F Y | g:i a'));
+        //$feed = Feeds::make('https://quan-cam.com/rss');
+        $feed = Information::where('type', FEED)->first();
+        $data = [];
+        if($feed){
+            $data = $feed->content;
         }
-dd('2');
-       
-        return $data;
+        return response()->json($data);
+    }
+
+    function saveFeed(Request $request)
+    {
+        $data = $request->all();
+        $data['type'] = FEED;
+        $feed = Information::create($data);
+
+        return response()->json($feed);
     }
 }

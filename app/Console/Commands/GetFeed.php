@@ -43,13 +43,13 @@ class GetFeed extends Command
     {
         $feedSite = Information::where('type', 'FEED')->first();
         //$feedSite = $feedSite->feeds;
-        $feedSite = ['https://quan-cam.com/rss'];
+        $feedSite = ['https://quan-cam.com/rss', 'https://toidicodedao.com/feed/'];
 Log::debug($feedSite);
         foreach ($feedSite as $key => $site) {
             $feed    = Feeds::make($site);
 
             if ($feed) {
-                $newFeed = Feed::where('site', $site)->orderBy('created_at', 'desc')->first();
+                $newFeed = Feed::where('site', $site)->orderBy('publish_date', 'desc')->first();
 
                 if(!$newFeed) {
                     $newFeed = new Feed();
@@ -58,7 +58,9 @@ Log::debug($feedSite);
                 }
 
                 foreach($feed->get_items() as $item){
-                    Log::debug($item->get_id(), $item->get_date('Y-m-d H:i:s'));
+                    Log::debug($item->get_id());
+                    Log::debug($item->get_date('Y-m-d H:i:s'));
+
                     if ($newFeed->url == $item->get_id()
                         && $newFeed->publish_date == $item->get_date('Y-m-d H:i:s')){
                         break;

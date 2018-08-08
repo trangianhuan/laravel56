@@ -46,6 +46,14 @@
             </li>
         </ul>
 
+        <ul class="nav nav-sidebar">
+            <li class="sidebar-menu-item selected">
+                <router-link to="/admin/feed" class="nav-link">
+                    <span class="fa fa-paper"></span> <span class="text">Feed Site</span>
+                </router-link>
+            </li>
+        </ul>
+
         <div class="spree-version hidden-xs hidden-sm">3.6.0.beta</div>
 
     </div>

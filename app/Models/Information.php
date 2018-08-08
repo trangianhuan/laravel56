@@ -12,4 +12,8 @@ class Information extends Model
         'type',
         'content',
     ];
+
+    public function getContentPluckAttribute(){
+        return empty($this->content) ? [] : explode(PHP_EOL, $this->content);
+    }
 }

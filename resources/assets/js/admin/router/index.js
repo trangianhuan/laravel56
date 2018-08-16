@@ -8,6 +8,7 @@ import UserCreate from '../components/user/Create.vue';
 import UserList from '../components/user/List.vue';
 
 import FeedShow from '../components/feed/Show.vue';
+import LogShow from '../components/feed/ViewLog.vue';
 
 const routes = [
   {
@@ -22,6 +23,7 @@ const routes = [
                 {path: 'user', component: UserList},
                 {path: 'user/create', component: UserCreate},
                 {path: 'feed', component: FeedShow},
+                {path: 'Log', component: LogShow},
             ]
         }
     ]

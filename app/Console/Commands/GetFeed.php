@@ -41,10 +41,10 @@ class GetFeed extends Command
      */
     public function handle()
     {
+        print '[' . date('Y-m-d H:i:s') . "] INFO run batch\n";
         $feedSite = Information::where('type', 'FEED')->first();
-        //$feedSite = $feedSite->feeds;
-        $feedSite = ['https://quan-cam.com/rss', 'https://toidicodedao.com/feed/'];
-Log::debug($feedSite);
+        //$feedSite = ['https://quan-cam.com/rss', 'https://toidicodedao.com/feed/'];
+        Log::info('run batch', [date('Y-m-d H:i:s')]);
         foreach ($feedSite as $key => $site) {
             $feed    = Feeds::make($site);
 
@@ -58,8 +58,6 @@ Log::debug($feedSite);
                 }
 
                 foreach($feed->get_items() as $item){
-                    Log::debug($item->get_id());
-                    Log::debug($item->get_date('Y-m-d H:i:s'));
 
                     if ($newFeed->url == $item->get_id()
                         && $newFeed->publish_date == $item->get_date('Y-m-d H:i:s')){

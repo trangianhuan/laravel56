@@ -19,33 +19,38 @@
 </style>
 
 <script>
-    import {mapGetters, mapActions, mapState} from 'vuex';
     import ButtonCus from '../buttons/Button';
 
     export default {
         data() {
             return {
                 feed:{
+                    id : null,
                     type : 'FEED',
                     content : null,
                 }
             }
         },
         methods: {
-            add(){
-
+                add(){
+                    axios.post('/api/feed', this.feed).then(res => {
+                    //this.feed.content = res.data;
+                    console.log('add success',res.data);
+                }).catch(err => {
+                    console.log(err);
+                })
             },
             cancel(){
-
+                console.log('cancel click');
             }
         },
         components: {
             ButtonCus
         },
         mounted(){
-
             axios.get('/api/feed').then(res => {
-                this.feed.content = res.data;
+                console.log({...res.data});
+                this.feed = {...res.data};
             }).catch(err => {
                 console.log(err);
             })

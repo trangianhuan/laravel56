@@ -15,10 +15,10 @@ class FeedController extends Controller
     {
         //$feed = Feeds::make('https://toidicodedao.com/feed');
         //$feed = Feeds::make('https://quan-cam.com/rss');
-        $feed = Information::where('type', FEED)->first();
+        $feed = Information::where('type', self::FEED)->first();
         $data = [];
-        if($feed){
-            $data = $feed->content;
+        if ($feed) {
+            $data = $feed;
         }
         return response()->json($data);
     }
@@ -26,9 +26,17 @@ class FeedController extends Controller
     function saveFeed(Request $request)
     {
         $data = $request->all();
-        $data['type'] = FEED;
-        $feed = Information::create($data);
-
+        $data['type'] = self::FEED;
+        $feed = Information::updateOrCreate(
+            ['type' => self::FEED],
+            ['content' => $data['content']]
+        );
         return response()->json($feed);
+    }
+
+    function getLog()
+    {
+        $path = base_path() . '/bash_log/feed.log';
+        return file_get_contents($path);
     }
 }

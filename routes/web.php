@@ -39,7 +39,7 @@ Route::namespace('Admin')->group(function () {
     //feed
     Route::get('api/feed', 'FeedController@getFeed');
     Route::post('api/feed', 'FeedController@saveFeed');
-
+    Route::get('api/log', 'FeedController@getLog');
 });
 
 Route::get('/{param}', function () {

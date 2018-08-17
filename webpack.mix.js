@@ -11,7 +11,7 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/assets/js/app.js', 'public/js')
+mix.js('resources/assets/js/web/app.js', 'public/js')
    .js('resources/assets/js/admin/app-admin.js', 'public/js')
    //.copy('node_modules/@fortawesome/fontawesome-free/css/fontawesome.min.css', 'public/css')
    //.copy('node_modules/@fortawesome/fontawesome-free/webfonts', 'public/fonts')

@@ -42,6 +42,14 @@ Route::namespace('Admin')->group(function () {
     Route::get('api/log', 'FeedController@getLog');
 });
 
+Route::namespace('Web')->group(function () {
+    Route::get('api/web/feed', 'FeedController@getFeed');
+});
+
+Route::get('/', function () {
+    return view('web');
+});
+
 Route::get('/{param}', function () {
     return view('admin');
 })->where('param', '.*');

@@ -7,6 +7,7 @@ use Log;
 use App\Models\Feed;
 use App\Models\Information;
 use Feeds;
+use Request;
 
 class GetFeed extends Command
 {
@@ -41,6 +42,7 @@ class GetFeed extends Command
      */
     public function handle()
     {
+        print '[' . Request::ip() . ']' ;
         print '[' . date('Y-m-d H:i:s') . "] INFO run batch\n";
         $feedSite = Information::where('type', 'FEED')->first();
         //$feedSite = ['https://quan-cam.com/rss', 'https://toidicodedao.com/feed/'];

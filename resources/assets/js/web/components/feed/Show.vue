@@ -1,6 +1,6 @@
 <template>
     <div class="feed">
-        <div class="col-md-4 col-12 mb-2" v-for="(items,key) of ListItem" :key="key">
+        <div class="col-md-6 col-12 mb-2" v-for="(items,key) of ListItem" :key="key">
             <h2>{{items[0]['site']}}</h2>
             <FeedList :ListItem="items"/>
         </div>

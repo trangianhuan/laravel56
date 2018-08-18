@@ -1,6 +1,9 @@
 <template>
     <div class="feed">
-        <FeedList  v-for="(items,key) of ListItem" :key="key" :ListItem="items"/>
+        <div class="col-md-4 col-12 mb-2" v-for="(items,key) of ListItem" :key="key">
+            <h2>{{items[0]['site']}}</h2>
+            <FeedList :ListItem="items"/>
+        </div>
     </div>
 </template>
 
@@ -13,6 +16,7 @@
 
 <script>
     import FeedList from './FeedList';
+
     export default{
         data(){
             return {

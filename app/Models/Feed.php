@@ -16,4 +16,9 @@ class Feed extends Model
         'description',
         'publish_date',
     ];
+
+    public function getContent2Attribute()
+    {
+        return htmlspecialchars($this->attributes['content']);
+    }
 }

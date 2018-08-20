@@ -47,7 +47,8 @@ class GetFeed extends Command
         $feedSite = Information::where('type', 'FEED')->first();
         //$feedSite = ['https://quan-cam.com/rss', 'https://toidicodedao.com/feed/'];
         Log::info('run batch', [date('Y-m-d H:i:s')]);
-        foreach ($feedSite as $key => $site) {
+        $feedSite1 = $feedSite->content_pluck;
+        foreach ($feedSite1 as $key => $site) {
             $feed    = Feeds::make($site);
 
             if ($feed) {
@@ -75,7 +76,10 @@ class GetFeed extends Command
                       'publish_date'     => $item->get_date('Y-m-d H:i:s'),
                     );
 
-                    Feed::create($data);
+                    $cr = Feed::create($data);
+                    if(!$cr){
+                        Log::debug('err insert');
+                    }
                 }
             }
 

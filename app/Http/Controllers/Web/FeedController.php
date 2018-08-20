@@ -14,7 +14,7 @@ class FeedController extends Controller
     {
         //$feed = Feeds::make('https://toidicodedao.com/feed');
         //$feed = Feeds::make('https://quan-cam.com/rss');
-        $feed = Feed::all();
+        $feed = Feed::orderBy('site','desc')->orderBy('publish_date', 'desc')->get();
         $data = [];
         if ($feed) {
             $data = $feed->groupBy('site');

@@ -1,12 +1,12 @@
 <template>
-    <div class="card text-gray" :class="cpdate()" style="width: 100%;">
-      <div class="card-header" @click="header">
+    <div class="card text-gray" style="width: 100%;">
+      <div class="card-header" :class="cpdate()" @click="header">
         <span class="date">{{item.publish_date}}</span> <br/>
         {{item.title}}
       </div>
       <div class="card-body" v-show="isShow">
         <a :href="item.url" target="blank">link</a>
-        <p class="card-text">{{item.content}}</p>
+        <p class="card-text" v-html="item.content"></p>
       </div>
     </div>
 </template>
@@ -46,7 +46,7 @@
             }
         },
         mounted(){
-            this.date = moment().subtract(3, "days").format("YYYY-MM-DD");
+            this.date = moment().subtract(5, "days").format("YYYY-MM-DD");
         }
     }
 </script>

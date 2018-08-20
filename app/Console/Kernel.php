@@ -26,7 +26,8 @@ class Kernel extends ConsoleKernel
     {
         $path_log = base_path('bash_log/feed.log');
         $schedule->command('feed:get')
-                 ->hourly()
+                 //->hourly()
+                ->everyMinute()
                  ->appendOutputTo($path_log);
     }
 
